@@ -1,0 +1,283 @@
+﻿@model Event_Management.Models.Book_EventModel
+
+
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+<h2>Book Events </h2>
+
+<script>
+    function selectedtext(ddlitem) {
+        var selvalue = ddlitem.value;
+        if (selvalue == Event_Management_Project.Models.DecorationModel.Dec_ID)
+        {
+            var seltext = ddlitem.Dec_Price.innerHTML;
+            $('Dec_Price').val(seltext);
+        }
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-horizontal">
+        <h4>events</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Event_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Event_ID, new { htmlAttributes = new { @class = "form-control", id = "Event_ID" } })
+                @Html.ValidationMessageFor(model => model.Event_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Event_Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("Event_Type", null, htmlAttributes: new { @class = "form-control" })*@
+                <select class="form-control" id="Event_Type" name="Event_Type">
+                    <option>Select Event</option>
+                    <option>Birthday Celebration</option>
+                    <option>Marriage Event</option>
+                    <option>Sagun Event</option> ViewBag.
+                    <option>Retairement Event</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Event_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Venue_Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @*@Html.DropDownList("Venue_Type", null, htmlAttributes: new { @class = "form-control" })*@
+                <select class="form-control" id="Venue_Type" name="Venue_Type">
+                    <option>Select Venue</option>
+                    <option>Home</option>
+                    <option>Hotel</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Venue_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.No_Of_Guest, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.No_Of_Guest, new { htmlAttributes = new { @class = "form-control", @max = "1000" } })
+                @Html.ValidationMessageFor(model => model.No_Of_Guest, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Booking_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Booking_Date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.Booking_Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date_of_Availability, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Date_of_Availability, new { htmlAttributes = new { @class = "form-control", @type = "date" } })*@
+                <select class="form-control" id="Date_of_Availability" name="Date_of_Availability">
+                    <option>Select Availablity </option>
+                    <option>Available</option>
+                    <option>Not Available</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Date_of_Availability, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Event_Time, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Event_Time, new { htmlAttributes = new { @class = "form-control", @max = "1000" } })*@
+                <select class="form-control" id="Event_Time" name="Event_Time">
+                    <option>Select Event_Time</option>>
+                    <option>Day</option>
+                    <option>Night</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Event_Time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dec_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("Dec_ID", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.Dec_ID, new SelectList(ViewBag.decoration, "Dec_id", "Dec_id"), new { @class = "decoration" })
+                @*<select class="form-control" id="Dec_ID" name="Dec_ID">
+                        <option>Select Decoration</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>*@
+                @Html.ValidationMessageFor(model => model.Dec_ID, "", new { @class = "text-danger" })
+                <input type="button" value="Get Price" id="Dec" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dec_Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Dec_Price, new { htmlAttributes = new { @id = "decorationPrice", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Dec_Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dish_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Dish_ID, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                @*@Html.DropDownListFor(model => model.Dish_ID,"", new SelectList(ViewBag.data, " Dish_ID ", " Dish_ID"))*@
+                @Html.DropDownListFor(model => model.Dish_ID, new SelectList(ViewBag.food, "Dish_id", "Dish_id"), new { @class = "food" })
+
+                @*<select class="form-control" id="Dish_ID" name="Dish_ID">
+                        <option>Select Venue</option>
+                        <option>101</option>
+                        <option>102</option>
+                        <option>103</option>
+                        <option>104</option>
+                    </select>*@
+                @Html.ValidationMessageFor(model => model.Dish_ID, "", new { @class = "text-danger" })
+
+                <input type="button" value="Get Price" id="Food" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dish_Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Dish_Price, new { htmlAttributes = new { @id = "foodPrice", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Dish_Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Item_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Item_ID, new SelectList(ViewBag.addonitem, "Item_id", "Item_id"), new { @class = "addonitem" })
+                @Html.ValidationMessageFor(model => model.Item_ID, "", new { @class = "text-danger" })
+                <input type="button" value="Get Price" id="Item" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Item_Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Item_Price, new { htmlAttributes = new { @id = "itemPrice", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Item_Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total_Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total_Price, new { htmlAttributes = new { @id = "calculate", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Total_Price, "", new { @class = "text-danger" })
+                <input type="button" id="Total" value="Calculate" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Book Event" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#edate').on("change", function () {
+                alert('Changed!');
+            });
+            $('#Dec').on("click", function () {
+                var decId = $(".decoration option:selected").val()
+                console.log(decId);
+                var decList =@Html.Raw(Json.Encode(ViewBag.decoration));
+                var decPrice = decList[decId - 1]["Dec_Price"];
+                $("#decorationPrice").val(decPrice);
+                //console.log(decList[Dec_Price]);
+            })
+
+            $('#Food').on("click", function () {
+                 var dishId = $(".food option:selected").val()
+                console.log(dishId);
+                var dishList =@Html.Raw(Json.Encode(ViewBag.food));
+                console.log(dishList);
+                var dishPrice = dishList[dishId - 101]["Price"];
+                $("#foodPrice").val(dishPrice);
+            })
+
+            $('#Item').on("click", function () {
+                //console.log($(".addonitem option:selected").val());
+
+                //$("#itemPrice").val($(".addonitem option:selected").val());
+               // console.log($("#itemPrice").val());
+                var itemId = $(".addonitem option:selected").val()
+                console.log(itemId);
+                var itemList =@Html.Raw(Json.Encode(ViewBag.addonitem));
+                var itemPrice = itemList[itemId - 1]["Item_Price"]
+                $("#itemPrice").val(itemPrice);
+            })
+
+            $('#Total').on("click", function () {
+                $("#calculate").val(parseInt($("#foodPrice").val()) + parseInt($("#itemPrice").val()) + parseInt($("#decorationPrice").val()))
+                console.log($("#calculate").val());
+            })
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<div>
+    @Html.ActionLink("Cancel", "Index")
+</div>
+
+
+
+
+
+
+
+
+
+
+

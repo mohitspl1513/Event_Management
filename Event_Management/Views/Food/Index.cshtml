@@ -1,0 +1,19 @@
+﻿@model List<Event_Management.Models.Food>
+
+@using Event_Management.Models;
+
+@{
+    ViewBag.Title = "Food";
+    WebGrid grid = new WebGrid(Model);
+}
+<h2>Rate for Per Plate Thali</h2>
+@grid.GetHtml(columns: new[]
+
+{
+    grid.Column("Dish_ID"),
+    grid.Column("Dish_Type"),
+    grid.Column("Dish_Item"),
+    grid.Column("Price")
+
+
+})

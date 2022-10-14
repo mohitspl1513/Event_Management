@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Event_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADD_ON_ITEM">
+    <Key>
+      <PropertyRef Name="item_ID" />
+    </Key>
+    <Property Name="item_ID" Type="Int32" Nullable="false" />
+    <Property Name="item_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Item_Price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Book_Event" Relationship="Self.FK__Book_Even__Item___440B1D61" FromRole="ADD_ON_ITEM" ToRole="Book_Event" />
+  </EntityType>
+  <EntityType Name="Book_Event">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Venue_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="No_Of_Guest" Type="Int32" Nullable="false" />
+    <Property Name="Booking_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date_of_Availability" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Event_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Dec_ID" Type="Int32" Nullable="false" />
+    <Property Name="Dec_Price" Type="Int32" Nullable="false" />
+    <Property Name="Dish_ID" Type="Int32" Nullable="false" />
+    <Property Name="Dish_Price" Type="Int32" Nullable="false" />
+    <Property Name="Item_ID" Type="Int32" Nullable="false" />
+    <Property Name="Item_Price" Type="Int32" Nullable="false" />
+    <Property Name="Total_Price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ADD_ON_ITEM" Relationship="Self.FK__Book_Even__Item___440B1D61" FromRole="Book_Event" ToRole="ADD_ON_ITEM" />
+    <NavigationProperty Name="Decoration" Relationship="Self.FK__Book_Even__Dec_I__4222D4EF" FromRole="Book_Event" ToRole="Decoration" />
+    <NavigationProperty Name="Food" Relationship="Self.FK__Book_Even__Dish___4316F928" FromRole="Book_Event" ToRole="Food" />
+  </EntityType>
+  <EntityType Name="Customer_Entry">
+    <Key>
+      <PropertyRef Name="Cust_ID" />
+    </Key>
+    <Property Name="Cust_ID" Type="Int32" Nullable="false" />
+    <Property Name="Cust_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Decoration">
+    <Key>
+      <PropertyRef Name="Dec_id" />
+    </Key>
+    <Property Name="Dec_id" Type="Int32" Nullable="false" />
+    <Property Name="Dec_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Range_of_Guest" Type="Int32" Nullable="false" />
+    <Property Name="Dec_Price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Book_Event" Relationship="Self.FK__Book_Even__Dec_I__4222D4EF" FromRole="Decoration" ToRole="Book_Event" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="Dish_ID" />
+    </Key>
+    <Property Name="Dish_ID" Type="Int32" Nullable="false" />
+    <Property Name="Dish_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Dish_Item" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Book_Event" Relationship="Self.FK__Book_Even__Dish___4316F928" FromRole="Food" ToRole="Book_Event" />
+  </EntityType>
+  <Association Name="FK__Book_Even__Item___440B1D61">
+    <End Role="ADD_ON_ITEM" Type="Self.ADD_ON_ITEM" Multiplicity="1" />
+    <End Role="Book_Event" Type="Self.Book_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADD_ON_ITEM">
+        <PropertyRef Name="item_ID" />
+      </Principal>
+      <Dependent Role="Book_Event">
+        <PropertyRef Name="Item_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Book_Even__Dec_I__4222D4EF">
+    <End Role="Decoration" Type="Self.Decoration" Multiplicity="1" />
+    <End Role="Book_Event" Type="Self.Book_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Decoration">
+        <PropertyRef Name="Dec_id" />
+      </Principal>
+      <Dependent Role="Book_Event">
+        <PropertyRef Name="Dec_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Book_Even__Dish___4316F928">
+    <End Role="Food" Type="Self.Food" Multiplicity="1" />
+    <End Role="Book_Event" Type="Self.Book_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="Dish_ID" />
+      </Principal>
+      <Dependent Role="Book_Event">
+        <PropertyRef Name="Dish_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Event_ManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADD_ON_ITEM" EntityType="Self.ADD_ON_ITEM" />
+    <EntitySet Name="Book_Event" EntityType="Self.Book_Event" />
+    <EntitySet Name="Customer_Entry" EntityType="Self.Customer_Entry" />
+    <EntitySet Name="Decorations" EntityType="Self.Decoration" />
+    <EntitySet Name="Foods" EntityType="Self.Food" />
+    <AssociationSet Name="FK__Book_Even__Item___440B1D61" Association="Self.FK__Book_Even__Item___440B1D61">
+      <End Role="ADD_ON_ITEM" EntitySet="ADD_ON_ITEM" />
+      <End Role="Book_Event" EntitySet="Book_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book_Even__Dec_I__4222D4EF" Association="Self.FK__Book_Even__Dec_I__4222D4EF">
+      <End Role="Decoration" EntitySet="Decorations" />
+      <End Role="Book_Event" EntitySet="Book_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book_Even__Dish___4316F928" Association="Self.FK__Book_Even__Dish___4316F928">
+      <End Role="Food" EntitySet="Foods" />
+      <End Role="Book_Event" EntitySet="Book_Event" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

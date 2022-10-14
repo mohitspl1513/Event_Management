@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3714a738d96a4cb0abd16349d3d49065" Name="Diagram1">
+        <EntityTypeShape EntityType="Event_ManagementModel.ADD_ON_ITEM" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Event_ManagementModel.Book_Event" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Event_ManagementModel.Customer_Entry" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Event_ManagementModel.Decoration" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Event_ManagementModel.Food" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Event_ManagementModel.FK__Book_Even__Item___440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Event_ManagementModel.FK__Book_Even__Dec_I__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Event_ManagementModel.FK__Book_Even__Dish___4316F928" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

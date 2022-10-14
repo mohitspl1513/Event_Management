@@ -1,0 +1,19 @@
+﻿@model List<Event_Management.Models.ADD_ON_ITEM>
+
+@using Event_Management.Models;
+
+@{
+    ViewBag.Title = "ADD_ON_ITEM";
+    WebGrid grid = new WebGrid(Model);
+}
+<h2>Extra Items Which You want to Add</h2>
+
+@grid.GetHtml(columns: new[]
+
+{
+
+    grid.Column("item_ID"),
+    grid.Column("item_Type"),
+    grid.Column("item_Price")
+
+})

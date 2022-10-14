@@ -1,0 +1,19 @@
+﻿@model List<Event_Management.Models.Decoration>
+@using Event_Management.Models;
+@{
+    ViewBag.Title = "Decoration";
+    WebGrid grid = new WebGrid(Model);
+}
+<h2>Decoration Plans</h2>
+@grid.GetHtml(columns: new[]
+
+{
+    grid.Column("Dec_ID"),
+    grid.Column("Dec_Type"),
+    grid.Column("Range_of_Guest"),
+    grid.Column("Dec_Price")
+
+
+})
+
+

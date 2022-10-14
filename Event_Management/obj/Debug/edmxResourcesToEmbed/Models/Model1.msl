@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Event_ManagementModelStoreContainer" CdmEntityContainer="Event_ManagementEntities">
+    <EntitySetMapping Name="ADD_ON_ITEM">
+      <EntityTypeMapping TypeName="Event_ManagementModel.ADD_ON_ITEM">
+        <MappingFragment StoreEntitySet="ADD_ON_ITEM">
+          <ScalarProperty Name="item_ID" ColumnName="item_ID" />
+          <ScalarProperty Name="item_Type" ColumnName="item_Type" />
+          <ScalarProperty Name="Item_Price" ColumnName="Item_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Book_Event">
+      <EntityTypeMapping TypeName="Event_ManagementModel.Book_Event">
+        <MappingFragment StoreEntitySet="Book_Event">
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Event_Type" ColumnName="Event_Type" />
+          <ScalarProperty Name="Venue_Type" ColumnName="Venue_Type" />
+          <ScalarProperty Name="No_Of_Guest" ColumnName="No_Of_Guest" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="Date_of_Availability" ColumnName="Date_of_Availability" />
+          <ScalarProperty Name="Event_Time" ColumnName="Event_Time" />
+          <ScalarProperty Name="Dec_ID" ColumnName="Dec_ID" />
+          <ScalarProperty Name="Dec_Price" ColumnName="Dec_Price" />
+          <ScalarProperty Name="Dish_ID" ColumnName="Dish_ID" />
+          <ScalarProperty Name="Dish_Price" ColumnName="Dish_Price" />
+          <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+          <ScalarProperty Name="Item_Price" ColumnName="Item_Price" />
+          <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer_Entry">
+      <EntityTypeMapping TypeName="Event_ManagementModel.Customer_Entry">
+        <MappingFragment StoreEntitySet="Customer_Entry">
+          <ScalarProperty Name="Cust_ID" ColumnName="Cust_ID" />
+          <ScalarProperty Name="Cust_Name" ColumnName="Cust_Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Decorations">
+      <EntityTypeMapping TypeName="Event_ManagementModel.Decoration">
+        <MappingFragment StoreEntitySet="Decoration">
+          <ScalarProperty Name="Dec_id" ColumnName="Dec_id" />
+          <ScalarProperty Name="Dec_Type" ColumnName="Dec_Type" />
+          <ScalarProperty Name="Range_of_Guest" ColumnName="Range_of_Guest" />
+          <ScalarProperty Name="Dec_Price" ColumnName="Dec_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Foods">
+      <EntityTypeMapping TypeName="Event_ManagementModel.Food">
+        <MappingFragment StoreEntitySet="Food">
+          <ScalarProperty Name="Dish_ID" ColumnName="Dish_ID" />
+          <ScalarProperty Name="Dish_Type" ColumnName="Dish_Type" />
+          <ScalarProperty Name="Dish_Item" ColumnName="Dish_Item" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
